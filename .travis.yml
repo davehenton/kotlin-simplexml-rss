@@ -10,21 +10,21 @@ cache:
 language: java
 
 jdk:
-  - oraclejdk8
+ - oraclejdk8
 
 CODECLIMATE_TEST_REPORTER_ID: 5258eccf2d2f383803b6ee1733302f21ef55eef653d40e4ddb4935447735030f
 
 
- except:
-  - /^v\d/
- before_script:	
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter	
-  - chmod +x ./cc-test-reporter	
-  - ./cc-test-reporter before-build	
+except:
+ - /^v\d/
+before_script:	
+ - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter	
+ - chmod +x ./cc-test-reporter	
+ - ./cc-test-reporter before-build	
  #Build and perform release (if needed)	#Build and perform release (if needed)
 script:	script:
-  - ./gradlew build -s && ./gradlew ciPerformRelease	  - ./gradlew build -s && ./gradlew ciPerformRelease
- after_script:	
-  - mv "build/reports/jacoco/test/jacocoTestReport.xml" "src/main/kotlin/jacoco.xml"	
-  - cd src/main/kotlin/	
-  - ../../../cc-test-reporter after-build -d -t jacoco --exit-code $TRAVIS_TEST_RESULT	
+ - ./gradlew build -s && ./gradlew ciPerformRelease	  - ./gradlew build -s && ./gradlew ciPerformRelease
+after_script:	
+ - mv "build/reports/jacoco/test/jacocoTestReport.xml" "src/main/kotlin/jacoco.xml"	
+ - cd src/main/kotlin/	
+ - ../../../cc-test-reporter after-build -d -t jacoco --exit-code $TRAVIS_TEST_RESULT	
