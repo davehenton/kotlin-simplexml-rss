@@ -12,6 +12,7 @@ language: java
 jdk:
   - oraclejdk8
 
+CODECLIMATE_TEST_REPORTER_ID: 5258eccf2d2f383803b6ee1733302f21ef55eef653d40e4ddb4935447735030f
 
 
  except:	  except:
